@@ -7,26 +7,22 @@
 class Solution:
     def IsPopOrder(self, pushV, popV):
         stack = []
-        if len(pushV)==0:
+        if len(pushV)==0 or len(popV)==0:
             return False
 
-        while pushV or stack:
-            popVNode = popV.pop(0)
-            if stack and stack[-1]== popVNode:
-                stack.pop()
-                continue
+
+        while popV:
+            if pushV and pushV[0] == popV[0]:
+                pushV.pop(0)
+                popV.pop(0)
+            elif stack and stack[-1] == popV[0]:
+                stack.pop(-1)
+                popV.pop(0)
+            elif pushV:
+                stack.append(pushV.pop(0))
             else:
-                pushNode = pushV.pop(0)
-                if pushNode==popVNode:
-                    continue
-                while(popVNode!=pushNode):
-                    stack.append(pushNode)
-                    pushNode = pushV.pop(0)
-
-        if popV:
-            return False
-        else:
-            return True
+                return False
+        return True
 
 print(Solution().IsPopOrder([1,2,3,4,5],[4,3,5,1,2]))
 
