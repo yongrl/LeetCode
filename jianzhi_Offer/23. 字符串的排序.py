@@ -36,30 +36,32 @@ class Solution:
 
 # 试图按顺序排列
 class Solution_1:
-    def __init__(self):
-        self.num=0
-        self.res=[]
-        self.ss=''
-
     def Permutation(self, ss):
+        if ss is None or len(ss)==0:
+            return []
         ss = sorted(ss)
         ss = ''.join(ss)
-        self.num = len(ss)-1
-        self.ss = ss
-        self.helper()
-        print(self.res)
-        return self.res
+        res = self.helper([('',ss)])
+        res = [tup[0]+tup[1] for tup in res]
+        print(res)
+        return res
 
-    def helper(self,str='',index=0):
-        if index == self.num:
-            self.res.append(str)
-            self.helper(str=str[:-1],index=-1)
-        else:
-            for i in range(len(self.ss)):
-                str = str+self.ss[i]
-                self.helper(str,i+1)
+    def helper(self,str_list):
+        res=[]
+        for tup in str_list:
+            pre,next = tup[0],tup[1]
+            if next=='':
+                return str_list
+            for c in next:
+                tup = (pre+c,next.replace(c,'',1))
+                if tup not in res:
+                    res.append(tup)
+        return self.helper(res)
 
-Solution_1().Permutation(ss ='abc')
+
+
+
+Solution_1().Permutation(ss ='abbc')
 
 
 
