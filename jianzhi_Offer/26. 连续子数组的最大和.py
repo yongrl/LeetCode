@@ -8,41 +8,24 @@ HZ偶尔会拿些专业问题来忽悠那些非计算机专业的同学。
 @author: yongrl
 @date: 20190416
 
-Solution :
-if the sum before a positive number is negative then drop the sum and sum from this point
-
-before visit a negative number, use a variable to store the current max sum.
+Solution
+dynamic program:
+res: store global max sum
+cur_sum: store current sum
+cur_sum = max(cur_sum+i,i)
+res = max(cur_sum,res)
 '''
+
 class Solution:
     def FindGreatestSumOfSubArray(self, array):
-        pos_sum = 0
-        cur_sum = 0
-        for i in array:
-            if i < 0:
-                cur_sum = cur_sum + i
-            else:
-                if cur_sum>=0:
-                    pos_sum = cur_sum
-                    pos_sum+=i
-                else:
-                    pos_sum = i
-                cur_sum = pos_sum
-
-        return pos_sum
-
-    def FindGreatestSumOfSubArray_1(self, array):
-        cur = 0
-        for i in array:
-            if i > 0 and cur<0:
-                max =i
-                cur = max
-            if i >0 and cur>=0:
-                max += cur + i
-                cur = max
-            if i<0:
-                cur = cur+i
-        return max
-
+        res = array[0]
+        cur_sum = array[0]
+        for i in range(1,len(array)):
+            # current step only have two choice: add current number or drop previous
+            # sum and only store the current number
+            cur_sum = max(cur_sum+array[i],array[i])
+            res = max(cur_sum,res)
+        return res
 
 print(Solution().FindGreatestSumOfSubArray_1([6,-3,-2,7,-15,1,2,2]))
 
