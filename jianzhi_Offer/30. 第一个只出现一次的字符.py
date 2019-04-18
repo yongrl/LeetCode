@@ -31,7 +31,4 @@ class Solution:
                 break
         return s.index(j)
 
-
-
-
 print(Solution().FirstNotRepeatingChar_hash('google'))
