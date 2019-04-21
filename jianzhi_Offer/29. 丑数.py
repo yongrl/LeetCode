@@ -42,4 +42,4 @@ class Solution:
         return min(min(min_2,min_3),min_5)
 
 
-print(Solution().GetUglyNumber_Solution(5))
+print(Solution().GetUglyNumber_Solution(100))

@@ -1,3 +1,4 @@
+# -*- coding:utf-8 -*-
 '''
 题目描述
 输入一个字符串,按字典序打印出该字符串中字符的所有排列。
@@ -62,9 +63,3 @@ class Solution_1:
 
 
 Solution_1().Permutation(ss ='abbc')
-
-
-
-
-
-

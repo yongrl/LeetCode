@@ -17,20 +17,34 @@ class Solution:
         '''
         if pRoot is None:
             return 0
-        pre_level =[]
+
         cur_level = [pRoot]
-        next_level = []
         count = 0
+
         while cur_level:
-            count =+ 1
-            nodes = cur_level.pop(0)
-            if nodes.left:
-                next_level.append(nodes.left)
-            if nodes.right:
-                next_level.append(nodes.right)
-            nodes_pool = next_pool
-            next_pool = []
+            count += 1
+            temp = cur_level
+            cur_level = []
+
+            for node in temp:
+                if node.left:
+                    cur_level.append(node.left)
+                if node.right:
+                    cur_level.append(node.right)
         return count
+
+    def TreeDepth_1(self,pRoot):
+        '''
+        深度优先遍历
+        :param pRoot:
+        :return:
+        '''
+
+        if pRoot is None:
+            return 0
+
+        return max(self.TreeDepth_1(pRoot.left),self.TreeDepth_1(pRoot.right))+1
+
 
 
 

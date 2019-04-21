@@ -5,7 +5,8 @@
 思路：
 
 1. python 自带函数s.count(i)
-2. list(tuple(value,count)) 遍历一遍数组基数,还是用hash吧，这个用字典，不能保证顺序，用list+tuple不好访问内部值
+2. list(tuple(value,count)) 遍历一遍数组基数,还是用hash吧，这个用字典，不能保证顺序，
+    用list+tuple不好访问内部值
 3. hash
 有两种hash方式,一种直接hash为256个assic码,
 另一种hash为58个桶，因为A-Z为65-90,a-z为97-122，每个字符对应的hash值为ord(s)-65

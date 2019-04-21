@@ -9,6 +9,7 @@ class TreeNode:
         self.val = x
         self.left = None
         self.right = None
+
 class Solution:
     # 返回二维列表，内部每个列表表示找到的路径
     def FindPath(self, root, expectNumber):
